@@ -20,27 +20,12 @@
 function pairs(names) {
   // Your code goes here
   let final = [];
-  let tmp = [];
-  let i;
 
   if (!names || names.length == 0) return final;
 
-  let loops = names.length;
-
-  //console.log(`Names length: ${names.length}. Loops: ${Math.floor(loops / 2)}`);
-
-  for (i = 0; i < Math.floor(loops / 2); i++) {
-    tmp.push(names.getRandom());
-    tmp.push(names.getRandom());
-    final.push(tmp);
-    //console.log(`Index: ${i}, Temp: ${tmp}`);
-    tmp = [];
-    //console.log(`Final: ${final}. Index now: ${i}`);
-  }
-
-  if (loops % 2 !== 0) {
-    //console.log(`Odd number. Final item: ${names[0]}`);
-    final.push(names);
+  while (names.length > 1) {
+    final.push([names.getRandom(), names.getRandom()]);
+    if (names.length == 1) final.push(names);
   }
 
   return final;
